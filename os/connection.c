@@ -27,13 +27,13 @@ Copyright 1987, 1989 by Digital Equipment Corporation, Maynard, Massachusetts.
 
                         All Rights Reserved
 
-Permission to use, copy, modify, and distribute this software and its 
-documentation for any purpose and without fee is hereby granted, 
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
-both that copyright notice and this permission notice appear in 
+both that copyright notice and this permission notice appear in
 supporting documentation, and that the name of Digital not be
 used in advertising or publicity pertaining to distribution of the
-software without specific, written prior permission.  
+software without specific, written prior permission.
 
 DIGITAL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING
 ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL
@@ -215,7 +215,7 @@ void SetConnectionTranslation(int conn, int client)
             node = &((*node)->next);
         }
         return;
-    } else 
+    } else
     {
         while (*node != NULL)
         {
@@ -493,8 +493,8 @@ CloseWellKnownConnections(void)
 }
 
 static void
-AuthAudit (ClientPtr client, Bool letin, 
-    struct sockaddr *saddr, int len, 
+AuthAudit (ClientPtr client, Bool letin,
+    struct sockaddr *saddr, int len,
     unsigned int proto_n, char *auth_proto, int auth_id)
 {
     char addr[128];
@@ -589,17 +589,17 @@ AuthAudit (ClientPtr client, Bool letin,
     else {
 	client_uid_string[0] = '\0';
     }
-    
+
 #ifdef XSERVER_DTRACE
     XSERVER_CLIENT_AUTH(client->index, addr, client_pid, client_zid);
 #endif
     if (auditTrailLevel > 1) {
       if (proto_n)
-	AuditF("client %d %s from %s%s\n  Auth name: %.*s ID: %d\n", 
+	AuditF("client %d %s from %s%s\n  Auth name: %.*s ID: %d\n",
 	       client->index, letin ? "connected" : "rejected", addr,
 	       client_uid_string, (int)proto_n, auth_proto, auth_id);
-      else 
-	AuditF("client %d %s from %s%s\n", 
+      else
+	AuditF("client %d %s from %s%s\n",
 	       client->index, letin ? "connected" : "rejected", addr,
 	       client_uid_string);
 
@@ -624,8 +624,8 @@ AuthorizationIDOfClient(ClientPtr client)
  *                   CARD8	byteOrder;
  *                   BYTE	pad;
  *                   CARD16	majorVersion, minorVersion;
- *                   CARD16	nbytesAuthProto;    
- *                   CARD16	nbytesAuthString;   
+ *                   CARD16	nbytesAuthProto;
+ *                   CARD16	nbytesAuthString;
  *                 } xConnClientPrefix;
  *
  *     	It is hoped that eventually one protocol will be agreed upon.  In the
@@ -636,8 +636,8 @@ AuthorizationIDOfClient(ClientPtr client)
  *****************************************************************/
 
 char *
-ClientAuthorized(ClientPtr client, 
-    unsigned int proto_n, char *auth_proto, 
+ClientAuthorized(ClientPtr client,
+    unsigned int proto_n, char *auth_proto,
     unsigned int string_n, char *auth_string)
 {
     OsCommPtr 		priv;
@@ -773,7 +773,7 @@ AllocNewConnection (XtransConnInfo trans_conn, int fd, CARD32 conn_time)
 #endif
 #ifdef XSERVER_DTRACE
     XSERVER_CLIENT_CONNECT(client->index, fd);
-#endif	
+#endif
 
     return client;
 }
@@ -810,9 +810,9 @@ EstablishNewConnections(ClientPtr clientUnused, pointer closure)
 	{
 	    oc = (OsCommPtr)(client->osPrivate);
 	    if ((oc && (oc->conn_time != 0) &&
-		(connect_time - oc->conn_time) >= TimeOutValue) || 
+		(connect_time - oc->conn_time) >= TimeOutValue) ||
 		(client->noClientException != Success && !client->clientGone))
-		CloseDownClient(client);     
+		CloseDownClient(client);
 	}
     }
 #ifndef WIN32
@@ -820,7 +820,7 @@ EstablishNewConnections(ClientPtr clientUnused, pointer closure)
     {
       while (readyconnections.fds_bits[i])
 #else
-      for (i = 0; i < XFD_SETCOUNT(&readyconnections); i++) 
+      for (i = 0; i < XFD_SETCOUNT(&readyconnections); i++)
 #endif
       {
 	XtransConnInfo trans_conn, new_trans_conn;
@@ -942,7 +942,7 @@ CloseDownFileDescriptor(OsCommPtr oc)
     ConnectionTranslation[connection] = 0;
 #else
     SetConnectionTranslation(connection, 0);
-#endif    
+#endif
     FD_CLR(connection, &AllSockets);
     FD_CLR(connection, &AllClients);
     FD_CLR(connection, &ClientsWithInput);
@@ -961,7 +961,7 @@ CloseDownFileDescriptor(OsCommPtr oc)
 
 /*****************
  * CheckConnections
- *    Some connection has died, go find which one and shut it down 
+ *    Some connection has died, go find which one and shut it down
  *    The file descriptor has been closed, but is still in AllClients.
  *    If would truly be wonderful if select() would put the bogus
  *    file descriptors in the exception mask, but nooooo.  So we have
@@ -974,7 +974,7 @@ CheckConnections(void)
 #ifndef WIN32
     fd_mask		mask;
 #endif
-    fd_set		tmask; 
+    fd_set		tmask;
     int			curclient, curoff;
     int			i;
     struct timeval	notime;
@@ -1004,7 +1004,7 @@ CheckConnections(void)
                     CloseDownClient(clients[ConnectionTranslation[curclient]]);
 	    mask &= ~((fd_mask)1 << curoff);
 	}
-    }	
+    }
 #else
     XFD_COPYSET(&AllClients, &savedAllClients);
     for (i = 0; i < XFD_SETCOUNT(&savedAllClients); i++)
@@ -1018,14 +1018,14 @@ CheckConnections(void)
 	if (r < 0)
             if (GetConnectionTranslation(curclient) > 0)
                 CloseDownClient(clients[GetConnectionTranslation(curclient)]);
-    }	
+    }
 #endif
 }
 
 
 /*****************
  * CloseDownConnection
- *    Delete client from AllClients and free resources 
+ *    Delete client from AllClients and free resources
  *****************/
 
 void
@@ -1135,7 +1135,7 @@ ListenToAllClients(void)
 	XFD_ORSET(&AllClients, &AllClients, &SavedAllClients);
 	XFD_ORSET(&ClientsWithInput, &ClientsWithInput, &SavedClientsWithInput);
 	GrabInProgress = 0;
-    }	
+    }
 }
 
 /****************
