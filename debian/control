@@ -9,7 +9,7 @@ Uploaders: Drew Parsons <dparsons@debian.org>, Cyril Brulebois <kibi@debian.org>
 # x11proto-xf86dri-dev and libdrm-dev are for DRI support for the Xorg server.
 # x11proto-print-dev and libfreetype6-dev are for Xprint
 # everything on is for the DMX and Xnest servers.
-Build-Depends: debhelper (>= 9), quilt, pkg-config, automake, libtool,
+Build-Depends: debhelper (>= 9), quilt, pkg-config, automake, dh-autoreconf,
  lsb-release, bison, flex,
 # all proto packages
  x11proto-bigreqs-dev (>= 1:1.1.0),
