@@ -1,6 +1,6 @@
 usr/bin/Xorg
 usr/bin/cvt
-usr/bin/gtt
+usr/bin/gtf
 usr/lib/xorg/modules
 usr/share/X11/xorg.conf.d
 usr/share/man/man*/Xorg.*
