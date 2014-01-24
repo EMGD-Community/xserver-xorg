@@ -72,9 +72,34 @@ Build-Depends: debhelper (>= 9), quilt, pkg-config, automake, dh-autoreconf,
  libglib2.0-dev,
  xkb-data,
  x11-xkb-utils,
+# docs
+ doxygen, xmlto, fop,
 Standards-Version: 3.9.1
 Vcs-Git: git://git.debian.org/git/pkg-xorg/xserver/xorg-server
 Vcs-Browser: http://git.debian.org/?p=pkg-xorg/xserver/xorg-server.git
+
+Package: xserver-xorg-1.9
+Architecture: any
+Breaks:
+ xserver-xorg
+Provides:
+ xserver-xorg
+Replaces:
+ xserver-xorg
+Depends:
+ xserver-xorg-1.9-core,
+ ${misc:Depends},
+Description: Xorg X server - server - metapackage
+ The Xorg X server is an X server for several architectures and operating
+ systems, which is derived from the XFree86 4.x series of X servers.
+ .
+ The Xorg server supports most modern graphics hardware from most vendors,
+ and supersedes all XFree86 X servers.
+ .
+ More information about X.Org can be found at:
+ <URL:http://www.X.org>
+ .
+ This package is built from the X.org xserver module.
 
 Package: xserver-xorg-1.9-core
 Architecture: any
