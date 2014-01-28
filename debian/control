@@ -104,7 +104,7 @@ Description: Xorg X server - server - metapackage
 Package: xserver-xorg-1.9-core
 Architecture: any
 Depends:
- xserver-common-1.9 (>= ${source:Version}),
+ xserver-1.9-common (>= ${source:Version}),
  keyboard-configuration [linux-any kfreebsd-any],
  udev (>= 149) [linux-any],
  ${shlibs:Depends},
