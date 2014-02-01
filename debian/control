@@ -80,12 +80,9 @@ Vcs-Browser: http://git.debian.org/?p=pkg-xorg/xserver/xorg-server.git
 
 Package: xserver-xorg-1.9
 Architecture: any
-Breaks:
- xserver-xorg
-Provides:
- xserver-xorg
-Replaces:
- xserver-xorg
+Breaks: xserver-xorg
+Provides: xserver-xorg
+Replaces: xserver-xorg
 Depends:
  xserver-xorg-1.9-core,
  ${misc:Depends},
@@ -172,10 +169,8 @@ Description: Xorg X server - core server
 
 Package: xserver-xorg-1.9-dev
 Architecture: any
-Provides:
- xserver-xorg-dev
-Conflicts:
- xserver-xorg-dev
+Provides: xserver-xorg-dev
+Conflicts: xserver-xorg-dev
 Depends:
  libpixman-1-dev (>= 0.15.20),
  x11proto-core-dev (>= 7.0.17),
@@ -240,3 +235,31 @@ Recommends:
 Replaces: xserver-xorg-core
 Description: common files used by various X servers
  This package provides files necessary for all X.Org based X servers.
+
+Package: xserver-xorg-1.9-input-all
+Architecture: all
+Depends:
+ xserver-xorg-1.9-input-evdev,
+ xserver-xorg-1.9-input-synaptics,
+ ${misc:Depends}
+Provides: xserver-xorg-input-all
+Conflicts: xserver-xorg-input-all
+Replaces: xserver-xorg-input-all
+Description: X.Org X server -- input driver metapackage
+ This package depends on the full suite of input drivers for the X.Org X server
+ (Xorg).  It does not provide any drivers itself, and may be removed if you wish
+ to only have certain drivers installed.
+
+Package: xserver-xorg-1.9-video-all
+Architecture: all
+Depends:
+ xserver-xorg-1.9-video-fbdev,
+ xserver-xorg-1.9-video-vesa,
+ ${misc:Depends}
+Provides: xserver-xorg-video-all
+Conflicts: xserver-xorg-video-all
+Replaces: xserver-xorg-video-all
+Description: X.Org X server -- output driver metapackage
+ This package depends on the full suite of output drivers for the X.Org X server
+ (Xorg).  It does not provide any drivers itself, and may be removed if you wish
+ to only have certain drivers installed.
