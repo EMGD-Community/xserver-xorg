@@ -85,6 +85,9 @@ Provides: xserver-xorg
 Replaces: xserver-xorg
 Depends:
  xserver-xorg-1.9-core,
+ xserver-xorg-1.9-input-all,
+ xserver-xorg-1.9-video-all,
+ xserver-xorg-1.9-input-evdev,
  ${misc:Depends},
 Description: Xorg X server - server - metapackage
  The Xorg X server is an X server for several architectures and operating
