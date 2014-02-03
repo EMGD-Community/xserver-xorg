@@ -651,10 +651,20 @@ configFiles(XF86ConfFilesPtr fileconf)
   
   /* ModulePath */
 
-  if (fileconf) {
-    if (xf86ModPathFrom != X_CMDLINE && fileconf->file_modulepath) {
+  if (xf86ModPathFrom != X_CMDLINE) {
+    if (fileconf && fileconf->file_modulepath) {
       xf86ModulePath = fileconf->file_modulepath;
       xf86ModPathFrom = X_CONFIG;
+    }
+    else if (strcmp(xf86ExtraModulePath, "") != 0) {
+      char *newpath = malloc(strlen(xf86ExtraModulePath)
+			     + strlen(xf86ModulePath)
+			     + 2);
+      strcpy(newpath, xf86ExtraModulePath);
+      strcat(newpath, ",");
+      strcat(newpath, xf86ModulePath);
+
+      xf86ModulePath = newpath;
     }
   }
 

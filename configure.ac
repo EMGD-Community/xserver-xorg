@@ -493,6 +493,10 @@ AC_ARG_WITH(module-dir,      AS_HELP_STRING([--with-module-dir=DIR],
 				  [Directory where modules are installed (default: $libdir/xorg/modules)]),
 				[ moduledir="$withval" ],
 				[ moduledir="${libdir}/xorg/modules" ])
+AC_ARG_WITH(extra-module-dir,AS_HELP_STRING([--with-extra-module-dir=DIR],
+				  [Extra module directory to search for modules before the default one (default: empty)]),
+				[ extra_moduledir="$withval" ],
+				[ extra_moduledir="" ])
 AC_ARG_WITH(log-dir,         AS_HELP_STRING([--with-log-dir=DIR],
 				  [Directory where log files are kept (default: $localstatedir/log)]),
 				[ logdir="$withval" ],
@@ -1806,6 +1810,7 @@ if test "x$XORG" = xyes; then
 	AC_DEFINE_DIR(XF86CONFIGFILE, XF86CONFIGFILE, [Name of configuration file])
 	AC_DEFINE_DIR(__XCONFIGDIR__, XF86CONFIGDIR, [Name of configuration directory])
 	AC_DEFINE_DIR(DEFAULT_MODULE_PATH, moduledir, [Default module search path])
+	AC_DEFINE_DIR(EXTRA_MODULE_PATH, extra_moduledir, [Extra module search path, searched before the default one])
 	AC_DEFINE_DIR(DEFAULT_LIBRARY_PATH, libdir, [Default library install path])
 	AC_DEFINE_DIR(DEFAULT_LOGPREFIX, LOGPREFIX, [Default log location])
 	AC_DEFINE_UNQUOTED(__VENDORDWEBSUPPORT__, ["$VENDOR_WEB"], [Vendor web address for support])
