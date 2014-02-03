@@ -156,8 +156,8 @@ Conflicts:
  xserver-xorg-core
 Provides:
  xserver-xorg-core,
- ${videoabi},
- ${inputabi},
+ xorg-video-abi-8,
+ xorg-input-abi-11,
 Description: Xorg X server - core server
  The Xorg X server is an X server for several architectures and operating
  systems, which is derived from the XFree86 4.x series of X servers.
