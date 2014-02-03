@@ -109,49 +109,46 @@ Depends:
  udev (>= 149) [linux-any],
  ${shlibs:Depends},
  ${misc:Depends},
-Recommends: libgl1-mesa-dri (>= 7.1~rc1)
-Suggests: xfonts-100dpi | xfonts-75dpi, xfonts-scalable
+Recommends:
+ libgl1-mesa-dri (>= 7.1~rc1)
+Suggests: 
+ xfonts-100dpi | xfonts-75dpi,
+ xfonts-scalable
 Breaks:
- xserver-xorg-video,
- xserver-xorg-video-1.0,
- xserver-xorg-video-1.9,
- xserver-xorg-video-2,
- xserver-xorg-video-4,
- xserver-xorg-video-5,
- xserver-xorg-video-6,
- xserver-xorg-input,
- xserver-xorg-input-2,
- xserver-xorg-input-2.1,
- xserver-xorg-input-4,
- xserver-xorg-input-7,
- xserver-xorg-input-wacom (<< 0.7.8),
- xserver-xorg-input-joystick (<= 1:1.5.0-3),
- xserver-xorg-input-synaptics (<= 1.2.2-1ubuntu4),
- xserver-xorg-input-tslib (<= 0.0.6-3),
- xserver-xorg-input-vmmouse (<= 1:12.6.5-4ubuntu2),
- xserver-xorg-input-wacom (<= 0.10.5+20100415-1),
-# from the debian-git
- xserver-xorg-video-cyrix (<= 1:1.1.0-8),
- xserver-xorg-video-i810 (<< 2:2.4),
- xserver-xorg-video-imstt (<= 1:1.1.0-7),
- xserver-xorg-video-nsc (<= 1:2.8.3-4),
- xserver-xorg-video-sunbw2 (<= 1:1.1.0-5),
- xserver-xorg-video-vga (<= 1:4.1.0-8),
-# unavailable for abi-8 in ubuntu
- xserver-xorg-video-v4l (<< 1:0.2.0-4ubuntu1),
- xserver-xorg-video-dummy (<= 1:0.3.3-2build1),
- xserver-xorg-video-radeonhd (<= 1.3.0-2),
- xserver-xorg-video-glamo (<= 0.0.0+20091108.git9918e082-1),
- xserver-xorg-video-glide (<= 1.0.3-2),
-# leftovers from hardy
- xserver-xorg-video-newport (<= 1:0.2.1-4ubuntu1),
- xserver-xorg-video-psb (<= 0.2.1-1ubuntu3),
- xserver-xorg-video-tga (<= 1:1.1.0-9ubuntu1),
- xserver-xorg-video-unichrome (<= 1:0.2.6.99-0ubuntu1),
-# Proprietary drivers don't have proper depends in Maverick
-# Drop after Natty release.
- xserver-xorg-video-8,
- fglrx (<= 2:8.801-0ubuntu2),
+ xorg-video-abi,
+ xorg-video-abi-1.0,
+ xorg-video-abi-1.9,
+ xorg-video-abi-2,
+ xorg-video-abi-4,
+ xorg-video-abi-5,
+ xorg-video-abi-6,
+ xorg-video-abi-7,
+ xorg-video-abi-9,
+ xorg-video-abi-10,
+ xorg-video-abi-11,
+ xorg-video-abi-12,
+ xorg-video-abi-13,
+ xorg-video-abi-14,
+ xorg-video-abi-14.1,
+ xorg-input-abi,
+ xorg-input-abi-2,
+ xorg-input-abi-2.1,
+ xorg-input-abi-4,
+ xorg-input-abi-7,
+ xorg-input-abi-8,
+ xorg-input-abi-9,
+ xorg-input-abi-10,
+ xorg-input-abi-12,
+ xorg-input-abi-12.2,
+ xorg-input-abi-13,
+ xorg-input-abi-14,
+ xorg-input-abi-15,
+ xorg-input-abi-16,
+ xorg-input-abi-17,
+ xorg-input-abi-18,
+ xorg-input-abi-19,
+ xorg-input-abi-19.1,
+ xserver-xorg-core
 Conflicts:
  xserver-xorg-core
 Provides:
