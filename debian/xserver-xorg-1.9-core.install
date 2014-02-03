@@ -1,7 +1,9 @@
 usr/bin/Xorg
 usr/bin/cvt
 usr/bin/gtf
-usr/lib/*/xorg/modules
+usr/lib/*/xorg/modules/*.so*
+usr/lib/*/xorg/modules/extensions/*.so*
+usr/lib/*/xorg/modules/multimedia/*.so*
 usr/share/X11/xorg.conf.d
 usr/share/man/man*/Xorg.*
 usr/share/man/man*/exa.*
