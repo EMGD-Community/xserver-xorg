@@ -61,8 +61,8 @@ Build-Depends: debhelper (>= 9), quilt, pkg-config, automake, dh-autoreconf,
 # other graphics based packages
  libdmx-dev (>= 1:1.0.1),
  libdrm-dev (>= 2.4.3) [!hurd-i386],
- libgl1-mesa-dev (>= 7.8),
- mesa-common-dev (>= 7.9) | mesa-7.9-common-dev,
+ libgl1-mesa-7.9-dev | libgl1-mesa-dev (>= 7.8),
+ mesa-7.9-common-dev | mesa-common-dev (>= 7.9),
 # hardware
  libpciaccess-dev (>= 0.11.0-2), libhal-dev [kfreebsd-any], libudev-dev (>= 151-3),
 # other deps
@@ -110,8 +110,8 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
 Recommends:
- libgl1-mesa-dri (>= 7.1~rc1)
-Suggests: 
+ libgl1-mesa-7.9-dri | libgl1-mesa-dri (>= 7.1~rc1)
+Suggests:
  xfonts-100dpi | xfonts-75dpi,
  xfonts-scalable
 Breaks:
