@@ -1,4 +1,4 @@
-usr/bin/X
+usr/bin/X*
 #usr/share/bug/xorg/control
 #usr/share/bug/xserver-xorg/script
 #usr/share/doc/xorg/*
