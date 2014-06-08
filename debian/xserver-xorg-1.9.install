@@ -1,4 +1,6 @@
-usr/bin/X*
+usr/bin/X
+usr/bin/X.real
+usr/bin/Xcompat
 #usr/share/bug/xorg/control
 #usr/share/bug/xserver-xorg/script
 #usr/share/doc/xorg/*
