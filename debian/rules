@@ -30,9 +30,9 @@ override_dh_auto_install:
 	dh_auto_install
 	
 	# adding Xcompat which filters new options added in newer Xorg versions 
-	cd debian/tmp/usr/bin/ && mv X X.real
+	cd debian/tmp/usr/bin/ && mv    X       X.real
 	cp compat/Xcompat debian/tmp/usr/bin/
-	cd debian/tmp/usr/bin/ && ln Xcompat X
+	cd debian/tmp/usr/bin/ && ln -s Xcompat X
 
 override_dh_install:
 	dh_install --fail-missing
