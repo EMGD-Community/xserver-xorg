@@ -6,10 +6,10 @@ import subprocess
 args = sys.argv[1:]
 for option_with_arg in ["-seat"]:
     if "-seat" in args:
+        print("Xcompat: Filtering out -seat!")
         pos = args.index("-seat")
         args.pop(pos)
         args.pop(pos)
 
 Xcommand = ["X.real"] +  args
-print Xcommand
-#subprocess.call(exec)
+subprocess.call(Xcommand)
