@@ -228,7 +228,6 @@ Depends:
  x11-xkb-utils,
  ${misc:Depends},
 Provides: xserver-common
-Conflicts: xserver-common
 Recommends:
  xfonts-base,
  xauth,
