@@ -1,15 +1,17 @@
-#! /usr/bin/env python
+#!/bin/bash
 
-import sys
-import subprocess
+args=""
+skip_next=false
+for arg in "$@"
+do
+  if $skip_next; then
+    skip_next=false
+  else
+    case "$arg" in
+      -seat) skip_next=true;;
+      *)     args="$args $arg";;
+    esac
+  fi
+done
 
-args = sys.argv[1:]
-for option_with_arg in ["-seat"]:
-    if "-seat" in args:
-        print("Xcompat: Filtering out -seat!")
-        pos = args.index("-seat")
-        args.pop(pos)
-        args.pop(pos)
-
-Xcommand = ["X.real"] +  args
-subprocess.call(Xcommand)
+exec /usr/bin/X.real $args
