@@ -9,6 +9,7 @@ do
   else
     case "$arg" in
       -seat) skip_next=true;;
+      -bpp)  skip_next=true;;
       *)     args="$args $arg";;
     esac
   fi
