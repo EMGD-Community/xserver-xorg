@@ -84,6 +84,7 @@ Breaks: xserver-xorg
 Provides: xserver-xorg
 Replaces: xserver-xorg
 Depends:
+ bash,
  xserver-xorg-1.9-core,
  xserver-xorg-1.9-input-all,
  xserver-xorg-1.9-video-all,
