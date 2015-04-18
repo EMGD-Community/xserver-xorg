@@ -1,0 +1,18 @@
+#!/bin/bash
+
+args=""
+skip_next=false
+for arg in "$@"
+do
+  if $skip_next; then
+    skip_next=false
+  else
+    case "$arg" in
+      -seat) skip_next=true;;
+      -bpp)  skip_next=true;;
+      *)     args="$args $arg";;
+    esac
+  fi
+done
+
+exec /usr/bin/X.real $args
