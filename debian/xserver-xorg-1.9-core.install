@@ -11,3 +11,5 @@ usr/share/man/man*/fbdevhw.*
 usr/share/man/man*/xorg.conf.*
 usr/share/man/man*/cvt.*
 usr/share/man/man*/gtf.*
+
+debian/local/64-xorg-xkb.rules /lib/udev/rules.d
