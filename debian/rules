@@ -1,0 +1,43 @@
+#!/usr/bin/make -f
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@  --with autoreconf --buildsystem=autoconf --parallel
+
+override_dh_auto_configure:
+	dh_auto_configure -- --libdir=/usr/lib/ \
+	                     --with-extra-module-dir="/usr/lib/${DEB_HOST_MULTIARCH}/xorg/extra-modules,/usr/lib/xorg/extra-modules"         \
+	                     --disable-selective-werror     \
+	                     --disable-xvfb                 \
+	                     --disable-xnest                \
+	                     --disable-xephyr               \
+	                     --disable-xfbdev               \
+	                     --disable-dmx                  \
+	                     --enable-install-libxf86config \
+	                     --enable-aiglx                 \
+	                     --enable-glx-tls               \
+	                     --enable-dri                   \
+	                     --enable-dri2                  \
+	                     --enable-xcalibrate            \
+	                     --enable-tslib                 \
+	                     --enable-xf86bigfont           \
+	                     --enable-config-udev           \
+	                     --enable-secure-rpc            \
+	                     --with-sha1=libgcrypt          \
+
+override_dh_auto_install:
+	dh_auto_install
+	
+	# adding Xcompat which filters new options added in newer Xorg versions 
+	cd debian/tmp/usr/bin/ && mv    X       X.real
+	cp compat/Xcompat debian/tmp/usr/bin/
+	cd debian/tmp/usr/bin/ && ln -s Xcompat X
+	#cd debian/tmp/usr/bin/ && ln -s X.real X
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_auto_test:
+	# Skipping tests..
+	# dh_auto_test
