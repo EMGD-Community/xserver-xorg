@@ -355,6 +355,11 @@ BEGIN {
 /^extern[ 	]/  {
     if (sdk) {
 	n = 3;
+	# skip line numbers GCC 5 adds before __attribute__
+	while ($n == "" || $0 ~ /^# [0-9]+ "/) {
+	    getline;
+	    n = 1;
+	}
 
 	# skip attribute, if any
 	while ($n ~ /^(__attribute__|__global)/ ||
@@ -366,8 +371,14 @@ BEGIN {
 
 	# type specifier may not be set, as in
 	#   extern _X_EXPORT unsigned name(...)
-	if ($n !~ /[^a-zA-Z0-9_]/)
+	if ($n !~ /[^a-zA-Z0-9_]/) {
 	    n++;
+	    # skip line numbers GCC 5 adds after __attribute__
+            while ($n == "" || $0 ~ /^# [0-9]+ "/) {
+               getline;
+               n = 1;
+            }
+	}
 
 	# match
 	#    extern _X_EXPORT type (* name[])(...)
