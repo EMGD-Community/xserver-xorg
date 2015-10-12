@@ -366,12 +366,7 @@ BEGIN {
 	    # skip modifiers, if any
 	    $n ~ /^\*?(unsigned|const|volatile|struct)$/ ||
 	    # skip pointer
-	    $n ~ /\*$/)
-	    n++;
-
-	# type specifier may not be set, as in
-	#   extern _X_EXPORT unsigned name(...)
-	if ($n !~ /[^a-zA-Z0-9_]/) {
+	    $n ~ /\*$/) {
 	    n++;
 	    # skip line numbers GCC 5 adds after __attribute__
             while ($n == "" || $0 ~ /^# [0-9]+ "/) {
@@ -379,6 +374,11 @@ BEGIN {
                n = 1;
             }
 	}
+
+	# type specifier may not be set, as in
+	#   extern _X_EXPORT unsigned name(...)
+	if ($n !~ /[^a-zA-Z0-9_]/)
+	    n++;
 
 	# match
 	#    extern _X_EXPORT type (* name[])(...)
