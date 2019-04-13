@@ -38,7 +38,7 @@ Build-Depends: debhelper (>= 9), quilt, pkg-config, automake, dh-autoreconf,
 # all libx*
  libxau-dev (>= 1:1.0.5-2),
  libxdmcp-dev (>= 1:0.99.1),
- libxfont-1.5.2-dev (>= 1:1.4.2),
+ libxfont1 (>= 1:1.4.2),
  libxkbfile-dev (>= 1:0.99.1),
  libxmuu-dev (>= 1:0.99.1),
  libxext-dev (>= 1:0.99.1),
